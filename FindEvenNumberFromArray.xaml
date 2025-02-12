@@ -75,9 +75,10 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FindEvenNumberFromArray" sap:VirtualizedContainerService.HintSize="539.2,424.44000000000005" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FindEvenNumberFromArray" sap:VirtualizedContainerService.HintSize="1102.4,562.84" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

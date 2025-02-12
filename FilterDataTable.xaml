@@ -93,7 +93,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FilterDataTable" sap:VirtualizedContainerService.HintSize="780.0000000000001,947.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FilterDataTable" sap:VirtualizedContainerService.HintSize="1085.6000000000001,947.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_ExcelData" />
       <Variable x:TypeArguments="sd:DataTable" Name="filter_DT" />

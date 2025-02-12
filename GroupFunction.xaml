@@ -33,6 +33,7 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -94,27 +95,30 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GroupFunction" sap:VirtualizedContainerService.HintSize="522.4000000000001,858.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GroupFunction" sap:VirtualizedContainerService.HintSize="1085.6000000000001,1305.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_ExcelData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="out_DT" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Group By specific value" sap:VirtualizedContainerService.HintSize="500.8,835.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_ExcelData" />
-        <Variable x:TypeArguments="sd:DataTable" Name="out_DT" />
-      </Sequence.Variables>
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="467.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[Directory.GetCurrentDirectory+&quot;/InputFile/CityPinCodeForRPA.xlsx&quot;]" />
+    <Sequence DisplayName="Group By specific value" sap:VirtualizedContainerService.HintSize="467.2,100.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="467.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[Directory.GetCurrentDirectory+&quot;/InputFile/CityPinCodeForRPA.xlsx&quot;]" />
-      <Assign sap:VirtualizedContainerService.HintSize="467.2,115.2" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">[out_DT]</OutArgument>
         </Assign.To>
@@ -126,28 +130,70 @@ Select grp.First
 ).CopyToDataTable]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="467.2,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="GroupByCityName" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
-      <Sequence sap2010:Annotation.AnnotationText="Group By 2 coulumn values" sap:VirtualizedContainerService.HintSize="467.2,368.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_2">
-          <Assign.To>
-            <OutArgument x:TypeArguments="sd:DataTable">[out_DT]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(
+      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="GroupByCityName" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="Group By 2 coulumn values" sap:VirtualizedContainerService.HintSize="467.2,377.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[out_DT]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(
 From row In dt_ExcelData
 Group row By a= row("districtNameEnglish"), b= row("pincode") Into grp=Group
 Select grp.First
 ).CopyToDataTable]</InArgument>
-          </Assign.Value>
-        </Assign>
-        <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="GroupByCityNamePinCode" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
-      </Sequence>
+        </Assign.Value>
+      </Assign>
+      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="GroupByCityNamePinCode" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
+    </Sequence>
+    <Sequence DisplayName="Get Not Duplicate Rows" sap:VirtualizedContainerService.HintSize="467.2,346.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[out_DT]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(
+From row In dt_ExcelData
+Group row By a = row("districtCode").ToString.Trim Into grp = Group
+Select grp.First
+	).CopyToDataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="NoDuplicateRows" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
+    </Sequence>
+    <Sequence DisplayName="Get Duplicate Rows" sap:VirtualizedContainerService.HintSize="467.2,337.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[out_DT]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(
+From row In dt_ExcelData
+Group row By a = row("districtCode").ToString.Trim Into grp = Group
+Where grp.Count&gt;1
+Select grp.ToList()
+	).SelectMany(Function(x) x).CopyToDataTable()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[out_DT]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_4" SheetName="NoDuplicateRows" WorkbookPath="[Directory.GetCurrentDirectory+&quot;\OutputFile\GroupByCityName.xlsx&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>
